@@ -7,20 +7,43 @@ This script will assist you in converting many .CUE / BIN files into .CHD files 
 Once you have this repository on your computer, open PowerShell, enter the repository root folder and run:
 .\cuetochd.ps1 -in "Where your .CUE files are" -out "Where you want your CHD files to be saved"
 
+### Windows
+Windows script comes with all the binaries you need. No need to install anything else.
+
+parameters:
+-in is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with double quotes.
+-out is the folder that you want your .CHDs to be saved to. Recommended enclosing with double quotes.
+
 Example 1: Convert a whole folder
 ```
-C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out "D:\CHD\Sega CD"
+C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out "D:\CHD\Sega CD\CHD"
 ```
 Example 2: Convert one file that is archived with rar.
 ```
 C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD\MyGame.rar" -out "D:\CHD\Sega CD"
 ```
-
 Example 3: Convert a folder but use your temp folder as the output folder.
 ```
 C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out $env:TEMP
 ```
 
+### Linux
+No binaries are included with linux. You must install unrar, mame-tools and unzip.
+Linux "only" supports rar and zip archives. I didn't test with 7z, gz, etc.
+
+parameters:
+-i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with single quotes.
+-o is the folder that you want your .CHDs to be saved to. Recommended enclosing with single quotes.
+
+Example 1: Convert a whole folder
+```
+#/src/cuetochd> ./cuetochd.ps1 -i '/mnt/roms/Sega CD' -o 'D:\CHD\Sega CD/CHD'
+```
+Example 2: Convert one file that is archived with rar.
+```
+#/src/cuetochd> ./cuetochd.ps1 -i '/mnt/roms/Sega CD/MyGame.rar' -o 'D:\CHD\Sega CD/CHD'
+```
+### All OSes
 This script must be run from the root of it's own directory.
 
 The quotes are necessary because of the spaces in the folder or file names.
@@ -31,21 +54,16 @@ Don't put forward slashes at the end of your folder or file names. It will proba
 
 It should work. If not, let me know. Be nice. Remember, they are only games.
 
-There are only two parameters:
--in designates the input. It can be a folder or a file. If a file, it must be .cue, .zip, .7z or .rar.
--out designates the output folder. It must be a folder. If the folder doesn't exist, the script will attempt to create it. 
-
-Again, best to enclose both parameters in double quotes.
-
 ### Prerequisites
 
 This only works with 64bit operating systems because it's packaged with the 64bit version of 7z.exe and chdman.exe.
 
-Currently, this is in only a Windows PowerShell script. I'll soon include a Linux bash script. I chose Windows because that's what I emulate on. I never thought I'd type those words... (I'm a unix enthusiast.)
+I haven't tested every possible scenario. There might be a few bugs here. Works fine for me though.
 
 ### Folder Structure
 
-cuetochd.ps1 - The script.
+cuetochd.ps1 - The PowerShell script.
+cuetochd.sh - The bash script.
 readme.MD - This file.
 workfolder\ - Where archives are temporarily extracted. They are deleted when the CHD is created.
 bin\ - Where chdman.exe and 7z.exe are.
