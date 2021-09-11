@@ -28,8 +28,8 @@ C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out $env:TEMP
 ```
 
 ### Linux
-No binaries are included with linux. You must install unrar, mame-tools and unzip.
-Linux "only" supports rar and zip archives. I didn't test with 7z, gz, etc.
+No binaries are included with linux. You must install unrar, mame-tools, p7zip-full and unzip.
+Linux "only" supports rar, 7z and zip archives. I didn't test with tar, gz, etc.
 
 parameters:
 -i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with single quotes.

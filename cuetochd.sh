@@ -44,6 +44,13 @@ function Extract-Zip {
     Route-File "$2"
 }
 
+function Extract-7zip {
+    #1 is 7z file with full path $2 is working folder.
+    hash 7z 2>/dev/null || { echo >&2 "This requires 7z. Please install it. Debian/ubuntu: apt install p7zip-full. Redhat: yum install p7zip-full. SUSE: zypper install p7zip-full. Arch: pacman -S p7zip-full"; exit 1; }
+    7z x -o"$2" "$1"
+    Route-File "$2"
+}
+
 function Got-Folder {
     #$1 is the folder
     ls "$1" | while read LINE
@@ -64,7 +71,9 @@ function Got-File {
     if [ "$EXTLOWER" = 'rar' ]; then
         Extract-Rar "$1" "$WORKDIRECTORY"
     elif [ "$EXTLOWER" = "zip" ]; then
-        echo "unzip"
+        Extract-Zip "$1" "$WORKDIRECTORY"
+    elif [ "$EXTLOWER" = "7z" ]; then
+        Extract-7zip "$1" "$WORKDIRECTORY"
     elif [ "$EXTLOWER" = "cue" ]; then
         chdman createcd -i "$1"  -o "$OUT/$FILENOEXT.chd" -f
         rm -rf "$WORKDIRECTORY"
