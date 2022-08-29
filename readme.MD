@@ -1,6 +1,6 @@
 # CueToChd
 
-This script will assist you in converting many .CUE / BIN files into .CHD files for MAME or Libretro use. I have tested with my Sega CD backups. But this should work with any Saturn, PC Engine / TG16, Neo Geo CD, Dreamcast, etc backup. You may use this to convert one file, or many folders of files. Supports the actual raw .CUE .BIN files as well as zip, 7z and rar archives.
+This script will assist you in converting many .CUE / BIN, GDI or ISO files into .CHD files for MAME or Libretro use. I have tested with my Sega CD, PSX and PSP backups. But this should work with any Saturn, PC Engine / TG16, Neo Geo CD, Dreamcast, etc backup. You may use this to convert one file, or many folders of files. Supports the actual raw .CUE .BIN files as well as zip, 7z and rar archives.
 
 ## Getting Started
 
@@ -29,7 +29,10 @@ C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out $env:TEMP
 
 ### Linux
 No binaries are included with linux. You must install unrar, mame-tools and unzip.
-Linux "only" supports rar and zip archives. I didn't test with 7z, gz, etc.
+Linux "only" supports rar, zip and 7z archives. I didn't test with 7z, gz, etc.
+
+Install whichever compression software you need: unzip, p7zip, unrar.
+The script will tell you how to install them if they aren't found.
 
 parameters:
 -i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with quotes.
