@@ -32,16 +32,16 @@ No binaries are included with linux. You must install unrar, mame-tools and unzi
 Linux "only" supports rar and zip archives. I didn't test with 7z, gz, etc.
 
 parameters:
--i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with single quotes.
--o is the folder that you want your .CHDs to be saved to. Recommended enclosing with single quotes.
+-i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with quotes.
+-o is the folder that you want your .CHDs to be saved to. Recommended enclosing with quotes.
 
 Example 1: Convert a whole folder
 ```
-#/src/cuetochd> ./cuetochd.ps1 -i '/mnt/roms/Sega CD' -o 'D:\CHD\Sega CD/CHD'
+#/src/cuetochd> ./cuetochd.sh -i '/mnt/roms/Sega CD' -o '/mnt/roms/CHD'
 ```
 Example 2: Convert one file that is archived with rar.
 ```
-#/src/cuetochd> ./cuetochd.ps1 -i '/mnt/roms/Sega CD/MyGame.rar' -o 'D:\CHD\Sega CD/CHD'
+#/src/cuetochd> ./cuetochd.sh -i '/mnt/roms/Sega CD/MyGame.rar' -o '/mnt/roms/CHD'
 ```
 ### All OSes
 This script must be run from the root of it's own directory.

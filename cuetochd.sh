@@ -58,14 +58,22 @@ function Got-File {
     local BASENAME="$(basename "$1")"
     local FILENOEXT="${BASENAME%.*}"
     local EXT="${BASENAME##*.}"
-    local WORKDIRECTORY=$(echo "$PWD/workfolder/$FILENOEXT")
+    local WORKDIRECTORY=$(echo "$PWD/workfolder")
     local EXTLOWER="${EXT,,}"
 
     if [ "$EXTLOWER" = 'rar' ]; then
         Extract-Rar "$1" "$WORKDIRECTORY"
     elif [ "$EXTLOWER" = "zip" ]; then
         echo "unzip"
+        unzip "$1" -d "$WORKDIRECTORY"
+        #foreach ($e in $extractedfiles) {
+        #    if ($e -is [string]) {
+        #        Route-File -file "$workfolder\$e" -out $out
+        #    }
+        Route-File "$WORKDIRECTORY"       
     elif [ "$EXTLOWER" = "cue" ]; then
+        echo "GOT A CUE"
+        echo "chdman createcd -i "$1"  -o $OUT/$FILENOEXT.chd -f"
         chdman createcd -i "$1"  -o "$OUT/$FILENOEXT.chd" -f
         rm -rf "$WORKDIRECTORY"
     else
