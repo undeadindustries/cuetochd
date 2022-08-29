@@ -63,6 +63,7 @@ function Got-File {
 
     if [ "$EXTLOWER" = 'rar' ]; then
         Extract-Rar "$1" "$WORKDIRECTORY"
+        Route-File "$WORKDIRECTORY" 
     elif [ "$EXTLOWER" = "zip" ]; then
         echo "unzip"
         unzip "$1" -d "$WORKDIRECTORY"
