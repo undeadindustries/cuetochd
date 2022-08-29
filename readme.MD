@@ -29,7 +29,7 @@ C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out $env:TEMP
 
 ### Linux
 No binaries are included with linux. You must install unrar, mame-tools and unzip.
-Linux "only" supports rar, zip and 7z archives. I didn't test with 7z, gz, etc.
+Linux "only" supports rar, zip and 7z archives. I didn't test with gz, or tar.
 
 Install whichever compression software you need: unzip, p7zip, unrar.
 The script will tell you how to install them if they aren't found.
