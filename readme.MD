@@ -57,6 +57,8 @@ Don't put forward slashes at the end of your folder or file names. It will proba
 
 It should work. If not, let me know. Be nice. Remember, they are only games.
 
+Be excellent to each other.
+
 ### Prerequisites
 
 This only works with 64bit operating systems because it's packaged with the 64bit version of 7z.exe and chdman.exe.
