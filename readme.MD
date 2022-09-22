@@ -1,6 +1,6 @@
 # CueToChd
 
-This script will assist you in converting many .CUE / BIN files into .CHD files for MAME or Libretro use. I have tested with my Sega CD backups. But this should work with any Saturn, PC Engine / TG16, Neo Geo CD, Dreamcast, etc backup. You may use this to convert one file, or many folders of files. Supports the actual raw .CUE .BIN files as well as zip, 7z and rar archives.
+This script will assist you in converting many .CUE / BIN, GDI or ISO files into .CHD files for MAME or Libretro use. I have tested with my Sega CD, PSX and PSP backups. But this should work with any Saturn, PC Engine / TG16, Neo Geo CD, Dreamcast, etc backup. You may use this to convert one file, or many folders of files. Supports the actual raw .CUE files as well as zip, 7z and rar archives.
 
 ## Getting Started
 
@@ -29,19 +29,22 @@ C:\src\CueToChd> .\cuetochd.ps1 -in "D:\backups\Sega CD" -out $env:TEMP
 
 ### Linux
 No binaries are included with linux. You must install unrar, mame-tools, p7zip-full and unzip.
-Linux "only" supports rar, 7z and zip archives. I didn't test with tar, gz, etc.
+Linux "only" supports rar, 7z and zip archives. I didn't test with gz, or tar.
+
+Install whichever compression software you need: unzip, p7zip, unrar.
+The script will tell you how to install them if they aren't found.
 
 parameters:
--i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with single quotes.
--o is the folder that you want your .CHDs to be saved to. Recommended enclosing with single quotes.
+-i is your input file or folder. It can be a folder, .cue file or an archive. Recommended enclosing with quotes.
+-o is the folder that you want your .CHDs to be saved to. Recommended enclosing with quotes.
 
 Example 1: Convert a whole folder
 ```
-#/src/cuetochd> ./cuetochd.ps1 -i '/mnt/roms/Sega CD' -o 'D:\CHD\Sega CD/CHD'
+#/src/cuetochd> ./cuetochd.sh -i '/mnt/roms/Sega CD' -o '/mnt/roms/CHD'
 ```
 Example 2: Convert one file that is archived with rar.
 ```
-#/src/cuetochd> ./cuetochd.ps1 -i '/mnt/roms/Sega CD/MyGame.rar' -o 'D:\CHD\Sega CD/CHD'
+#/src/cuetochd> ./cuetochd.sh -i '/mnt/roms/Sega CD/MyGame.rar' -o '/mnt/roms/CHD'
 ```
 ### All OSes
 This script must be run from the root of it's own directory.
@@ -53,6 +56,8 @@ It's recommended that the in and out folders are different.
 Don't put forward slashes at the end of your folder or file names. It will probably still work. But ...
 
 It should work. If not, let me know. Be nice. Remember, they are only games.
+
+Be excellent to each other.
 
 ### Prerequisites
 
