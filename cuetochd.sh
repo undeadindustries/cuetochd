@@ -39,15 +39,14 @@ function Extract-Rar {
 
 function Extract-Zip {
     #1 is zip file with full path $2 is working folder.
-    hash unzip 2>/dev/null || { echo >&2 "This requires p7zip. Please install it. Debian/ubuntu: apt install unzip. Redhat: yum install unzip. SUSE: zypper install unzip. Arch: pacman -S unzip"; exit 1; }
+    hash unzip 2>/dev/null || { echo >&2 "This requires unzip. Please install it. Debian/ubuntu: apt install unzip. Redhat: yum install unzip. SUSE: zypper install unzip. Arch: pacman -S unzip"; exit 1; }
     unzip "$1" -d "$2"
     Route-File "$2"
 }
 
 function Extract-7z {
     #1 is 7z file with full path $2 is working folder.
-    hash 7z 2>/dev/null || { echo >&2 "This requires unzip. Please install it. Debian/ubuntu: sudo add-apt-repository universe && sudo apt update. Redhat: sudo yum install p7zip p7zip-plugins Arch: ?"; exit 1; }
-    echo "7z x $1 -o$2"
+    hash 7z 2>/dev/null || { echo >&2 "This requires 7z. Please install it. Debian/ubuntu: apt install p7zip-full. Redhat: yum install p7zip-full. SUSE: zypper install p7zip-full. Arch: pacman -S p7zip-full"; exit 1; }
     7z x "$1" -o"$2"
     Route-File "$2"
 }
@@ -71,20 +70,15 @@ function Got-File {
    
     if [ "$EXTLOWER" = 'rar' ]; then
         Extract-Rar "$1" "$WORKDIRECTORY"
-        #Route-File "$WORKDIRECTORY" 
     elif [ "$EXTLOWER" = "zip" ]; then
-        #echo "unzip"
-        #unzip "$1" -d "$WORKDIRECTORY"
-        #Route-File "$WORKDIRECTORY"
         Extract-Zip "$1" "$WORKDIRECTORY"
     elif [ "$EXTLOWER" = "7z" ]; then
-        echo "7z"
         Extract-7z "$1" "$WORKDIRECTORY"
     elif [ "$EXTLOWER" = "cue" ] || [ "$EXTLOWER" = "iso" ] || [ "$EXTLOWER"  = "gdi" ]; then
-        #echo "GOT A GAME"
-        #echo "chdman createcd -i "$1"  -o $OUT/$FILENOEXT.chd -f"
         chdman createcd -i "$1"  -o "$OUT/$FILENOEXT.chd" -f
         rm -rf "$WORKDIRECTORY"
+    else
+        echo "Ignoring $1"
     fi
 }
 
